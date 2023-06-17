@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>sliders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .slider {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 50px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .slider:hover {
+      background-color: #ccc;
+    }
+
+    .input {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 30px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .textarea {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 100px;
+      background-color: #ddd;
+      cursor: text;
+    }
+
+    .textarea:hover {
+      background-color: #ccc;
+    }
+
+    .editor {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 300px;
+      background-color: #ddd;
+      cursor: text;
+    }
+
+    .editor-container {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 300px;
+      background-color: #ddd;
+      overflow: auto;
+    }
+
+    input[type="text"], input[type="password"], textarea {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      height: 30px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h2>sliders</h2>
+<div className="slider" id="slider1"></div>
+<div className="slider" id="slider2"></div>
+<div className="slider" id="slider3"></div>
+<div className="slider" id="slider4"></div>
+<div className="slider" id="slider5"></div>
+<div className="slider" id="slider6"></div>
+<div className="slider" id="slider7"></div>
+
+<div className="input">
+  <input type="text" id="input1">
+</div>
+
+<div className="textarea">
+  <textarea id="textarea1"></textarea>
+</div>
+
+<div className="editor">
+  <div className="editor-container" id="editor1"></div>
+</div>
+
+<script>
+  // slider 1
+  var slider1 = document.getElementById("slider1");
+  slider1.addEventListener("mousemove", function(event) {
+    var value1 = slider1.value;
+    value1 = Math.min(Math.max(value1, 0), 100);
+    slider1.value = value1;
+    document.getElementById("output1").innerHTML = value1;
+  });
+
+  // slider 2
+  var slider2 = document.getElementById("slider2");
+  slider2.addEventListener("mousemove", function(event) {
+    var value2 = slider2.value;
+    value2 = Math.min(Math.max(value2, 0), 100);
+    slider2.value = value2;
+    document.getElementById("output2").innerHTML = value2;
+  });
+
+  // slider 3
+  var slider3 = document.getElementById("slider3");
+  slider3.addEventListener("mousemove", function(event) {
+    var value3 = slider3.value;
+    value3 = Math.min(Math.max(value3, 0), 100);
+    slider3.value = value3;
+    document.getElementById("output3").innerHTML = value3;
+  });
+
+  // slider 4
+  var slider4 = document.getElementById("slider4");
+  slider4.addEventListener("mousemove", function(event) {
+    var value4 = slider4.value;
+    value4 = Math.min(Math.max(value4, 0), 100);
+    slider4.value = value4;
+    document.getElementById("output4").innerHTML = value4;
+  });
+
+  // slider 5
+  var slider5 = document.getElementById("slider5");
+  slider5.addEventListener("mousemove", function(event) {
+    var value5 = slider5.value;
+    value5 = Math.min(Math.max(value5, 0), 100);
+    slider5.value = value5;
+    document.getElementById("output5").innerHTML = value5;
+  });
+
+  // slider 6
+  var slider6 = document.getElementById("slider6");
+  slider6.addEventListener("mousemove", function(event) {
+    var value6 = slider6.value;
+    value6 = Math.min(Math.max(value6, 0), 100);
+    slider6.value = value6;
+    document.getElementById("output6").innerHTML = value6;
+  });
+
+  // slider 7
+  var slider7 = document.getElementById("slider7");
+  slider7.addEventListener("mousemove", function(event) {
+    var value7 = slider7.value;
+    value7 = Math.min(Math.max(value7, 0), 100);
+    slider7.value = value7;
+    document.getElementById("output7").innerHTML = value7;
+  });
+
+  // input
+  var input1 = document.getElementById("input1");
+  input1.addEventListener("keyup", function(event) {
+    var value1 = input1.value;
+    value1 = parseFloat(value1);
+    if (isNaN(value1)) {
+      value1 = 0;
+    }
+    input1.value = value1.toFixed(2);
+  });
+
+  // textarea
+  var textarea1 = document.getElementById("textarea1");
+  textarea1.addEventListener("keyup", function(event) {
+    var value1 = textarea1.value;
+    value1 = parseFloat(value1);
+    if (isNaN(value1)) {
+      value1 = 0;
+    }
+    textarea1.value = value1.toFixed(2);
+  });
+
+  // editor
+  var editor1 = document.getElementById("editor1");
+  editor1.addEventListener("keyup", function(event) {
+    var value1 = editor1.value;
+    value1 = parseFloat(value1);
+    if (isNaN(value1)) {
+      value1 = 0;
+    }
+    editor1.value = value1.toFixed(2);
+  });
+
+  // output
+  var output1 = document.getElementById("output1");
+  output1.innerHTML = "";
+  output1.innerHTML += "Value1: " + slider1.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value2: " + slider2.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value3: " + slider3.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value4: " + slider4.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value5: " + slider5.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value6: " + slider6.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Value7: " + slider7.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Input1: " + input1.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "textarea1: " + textarea1.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "editor1: " + editor1.value;
+  output1.innerHTML += "<br>";
+  output1.innerHTML += "Total: " + slider1.value + " - " + slider2.value + " - " + slider3.value + " - " + slider4.value + " - " + slider5.value + " - " + slider6.value + " - " + slider7.value;
+  });
+</script>
+</body>
+</html>
