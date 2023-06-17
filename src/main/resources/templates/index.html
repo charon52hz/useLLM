@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>学生自动批语系统</title>
+  <!-- 引入 layui.css -->
+  <link rel="stylesheet" href="//unpkg.com/layui@2.7.6/dist/css/layui.css">
+  <script>
+    <!-- 引入 layui.js -->
+    <script src="//unpkg.com/layui@2.7.6/dist/layui.js"/>
+  </script>
+</head>
+
+<body>
+<form class="layui-form" action="/input" method="get" lay-filter="example">
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名：</label>
+    <div class="layui-input-block">
+      <input type="text" name="stuName" lay-verify="title" autocomplete="off" placeholder="请输入学生姓名" class="layui-input" th:value="${stuName}">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">勤奋：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${qf}" class="demo-slider" id="slider1" name="qf">
+      <span id="value1"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">聪明：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${cm}" class="demo-slider" id="slider2" name="cm">
+      <span id="value2"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">课外活动：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${kwhd}" class="demo-slider" id="slider3" name="kwhd">
+      <span id="value3"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">卫生：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${ws}" class="demo-slider" id="slider4" name="ws">
+      <span id="value4"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">课堂参与：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${ktcy}" class="demo-slider" id="slider5" name="ktcy">
+      <span id="value5"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">课后作业：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${khzy}" class="demo-slider" id="slider6" name="khzy">
+      <span id="value6"></span><br>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">自我管理：</label>
+    <div class="layui-input-block">
+      <input type="range" min="0" max="100" th:value="${zwgl}" class="demo-slider" id="slider7" name="zwgl">
+      <span id="value7"></span><br>
+    </div>
+  </div>
+
+
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button id="submit"  onclick="submitFunction()" type="submit" class="layui-btn" lay-filter="demo1">提交</button>
+    </div>
+  </div>
+</form>
+<div class="layui-form-item layui-form-text">
+  <label class="layui-form-label">学生评语：</label>
+  <div class="layui-input-block">
+    <textarea placeholder="提交后显示学生评语" class="layui-textarea" name="desc" th:text="${content}"></textarea>
+  </div>
+</div>
+</body>
+<script>
+  // 获取所有滑块元素
+  const sliders = document.querySelectorAll(".demo-slider");
+  // 循环遍历每个滑块元素
+  for (let slider of sliders) {
+    // 获取滑块元素旁边的 span 元素
+    const valueLabel = document.getElementById(slider.id.replace("slider", "value"));
+    // 显示滑块的当前值
+    valueLabel.innerHTML = slider.value;
+    // 当滑块的值发生变化时，更新 span 元素的内容
+    slider.addEventListener("input", () => {
+      valueLabel.innerHTML = slider.value;
+    });
+  }
+
+    // 监听提交按钮点击事件
+    function submitFunction(){
+      alert("系统响应较慢，请点击确定后耐心等待...")
+  }
+
+</script>
+<style>
+  #slider1,#slider2,#slider3,#slider4,#slider5,#slider6,#slider7{
+    width: 500px;
+    background-color: #1E9FFF;
+    theme: #1E9FFF;
+  }
+</style>
+</html>

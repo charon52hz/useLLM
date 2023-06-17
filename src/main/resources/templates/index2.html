@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>学生自动评语系统</title>
+</head>
+<body>
+<h1>示例</h1>
+<form id="my-form" action="/input" method="get">
+  <label for="stuName">姓名:</label>
+  <input type="text" id="stuName" name="stuName">
+  <label for="slider1">勤奋:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider1" name="qf">
+  <span id="value1"></span><br>
+
+  <label for="slider2">聪明:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider2" name="cm">
+  <span id="value2"></span><br>
+
+  <label for="slider3">课外活动:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider3" name="kwhd">
+  <span id="value3"></span><br>
+
+  <label for="slider4">卫生:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider4" name="ws">
+  <span id="value4"></span><br>
+
+  <label for="slider5">课堂参与:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider5" name="ktcy">
+  <span id="value5"></span><br>
+
+  <label for="slider6">课后作业:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider6" name="khzy">
+  <span id="value6"></span><br>
+
+  <label for="slider7">自我管理:</label>
+  <input type="range" min="0" max="100" th:value="60" class="slider" id="slider7" name="zwgl">
+  <span id="value7"></span><br>
+
+  <button id="submit" class="button" th:type="submit">提交</button>
+</form>
+
+<label for="message">该学生的参考评语如下：</label>
+<textarea id="message" name="message" rows="6" cols="80" th:text="${content}"></textarea>
+
+<script>
+  // 获取所有滑块元素
+  const sliders = document.querySelectorAll(".slider");
+  // 循环遍历每个滑块元素
+  for (let slider of sliders) {
+    // 获取滑块元素旁边的 span 元素
+    const valueLabel = document.getElementById(slider.id.replace("slider", "value"));
+    // 显示滑块的当前值
+    valueLabel.innerHTML = slider.value;
+    // 当滑块的值发生变化时，更新 span 元素的内容
+    slider.addEventListener("input", () => {
+      valueLabel.innerHTML = slider.value;
+    });
+  }
+
+  //   $('#my-form').submit(function(e) {
+  //   e.preventDefault();
+  //   var formData = $(this).serialize();
+  //   $.ajax({
+  //   url: '/input', // 将 URL 替换为你的 Controller URL
+  //   type: 'GET',
+  //   data: formData,
+  //   success: function(response) {
+  //   console.log('提交成功：' + response);
+  // },
+  //   error: function(xhr, status, error) {
+  //   console.error('提交失败：' + error);
+  // }
+  // });
+  // });
+
+</script>
+</body>
+</html>
